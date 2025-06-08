@@ -1,0 +1,90 @@
+# Version catalog is a central place for you to declare and version dependencies
+# https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
+# https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
+
+[versions]
+kotlin = "2.1.20"
+kotlinxDatetime = "0.6.1"
+kotlinxSerializationJSON = "1.8.0"
+kotlinxSerializationCore = "1.8.0"
+kotlinxCoroutines = "1.9.0"
+composePlugin = "1.8.1"
+kotlinxRpc = "0.7.0"
+ktorVersion = "3.1.3"
+
+# Additional versions
+voyager = "1.0.0"
+materialIcons = "1.7.3"
+mockk = "1.13.8"
+typesafeConfig = "1.4.3"
+micrometer = "1.12.0"
+logback = "1.5.18"
+slf4j = "2.0.16"
+
+[libraries]
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
+kotlinxSerializationCore = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
+kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinxRpcCore = { module = "org.jetbrains.kotlinx:kotlinx-rpc-core", version.ref = "kotlinxRpc" }
+
+# Additional libraries
+voyagerNavigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyagerTransitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+materialIconsExtended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "materialIcons" }
+
+# kotlinx-rpc libraries
+kotlinxRpcKrpcClient = { module = "org.jetbrains.kotlinx:kotlinx-rpc-krpc-client", version.ref = "kotlinxRpc" }
+kotlinxRpcKrpcKtorClient = { module = "org.jetbrains.kotlinx:kotlinx-rpc-krpc-ktor-client", version.ref = "kotlinxRpc" }
+kotlinxRpcKrpcSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-rpc-krpc-serialization-json", version.ref = "kotlinxRpc" }
+kotlinxRpcKrpcServer = { module = "org.jetbrains.kotlinx:kotlinx-rpc-krpc-server", version.ref = "kotlinxRpc" }
+kotlinxRpcKrpcKtorServer = { module = "org.jetbrains.kotlinx:kotlinx-rpc-krpc-ktor-server", version.ref = "kotlinxRpc" }
+
+# Ktor libraries
+ktorClientCore = { module = "io.ktor:ktor-client-core", version.ref = "ktorVersion" }
+ktorClientCio = { module = "io.ktor:ktor-client-cio", version.ref = "ktorVersion" }
+ktorClientWebsockets = { module = "io.ktor:ktor-client-websockets", version.ref = "ktorVersion" }
+ktorClientContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorVersion" }
+ktorClientMock = { module = "io.ktor:ktor-client-mock", version.ref = "ktorVersion" }
+ktorSerializationKotlinxJson = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorVersion" }
+ktorServerCore = { module = "io.ktor:ktor-server-core", version.ref = "ktorVersion" }
+ktorServerNetty = { module = "io.ktor:ktor-server-netty", version.ref = "ktorVersion" }
+ktorServerContentNegotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktorVersion" }
+ktorServerCallLogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktorVersion" }
+ktorServerCallId = { module = "io.ktor:ktor-server-call-id", version.ref = "ktorVersion" }
+ktorServerDefaultHeaders = { module = "io.ktor:ktor-server-default-headers", version.ref = "ktorVersion" }
+ktorServerStatusPages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktorVersion" }
+ktorServerConfigYaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktorVersion" }
+ktorServerWebsockets = { module = "io.ktor:ktor-server-websockets", version.ref = "ktorVersion" }
+ktorServerTestHost = { module = "io.ktor:ktor-server-test-host", version.ref = "ktorVersion" }
+ktorServerMetricsMicrometer = { module = "io.ktor:ktor-server-metrics-micrometer", version.ref = "ktorVersion" }
+
+# Other libraries
+typesafeConfig = { module = "com.typesafe:config", version.ref = "typesafeConfig" }
+micrometerPrometheus = { module = "io.micrometer:micrometer-registry-prometheus", version.ref = "micrometer" }
+logbackClassic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+slf4jApi = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+# Testing libraries
+kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlinxCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
+# Libraries can be bundled together for easier import
+[bundles]
+kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines"]
+kotlinxRpcBundle = ["kotlinxRpcCore", "kotlinxSerializationCore"]
+voyager = ["voyagerNavigator", "voyagerTransitions"]
+kotlinxRpcClient = ["kotlinxRpcKrpcClient", "kotlinxRpcKrpcKtorClient", "kotlinxRpcKrpcSerializationJson"]
+kotlinxRpcServer = ["kotlinxRpcKrpcServer", "kotlinxRpcKrpcKtorServer", "kotlinxRpcKrpcSerializationJson"]
+ktorClient = ["ktorClientCore", "ktorClientCio", "ktorClientWebsockets", "ktorClientContentNegotiation", "ktorSerializationKotlinxJson"]
+logging = ["logbackClassic", "slf4jApi"]
+testing = ["kotlinTest", "kotlinxCoroutinesTest", "mockk"]
+
+[plugins]
+kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composePlugin" }
+kotlinPluginCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinxRpcPlugin = { id = "org.jetbrains.kotlinx.rpc.plugin", version.ref = "kotlinxRpc" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktorVersion" }
