@@ -92,3 +92,10 @@ make help          # Show all commands
 ./gradlew :app-backend:test  
 ./gradlew :app-notebook:test
 ```
+
+##  Demo
+
+See the application in action:
+
+![App Demo](docs/test.gif)
+
