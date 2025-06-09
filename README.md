@@ -71,7 +71,7 @@ make clean         # Clean artifacts
 make help          # Show all commands
 ```
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
@@ -81,7 +81,7 @@ make help          # Show all commands
 | **Navigation** | Voyager | Frontend screen navigation |
 | **Build** | Gradle + KMP | Multi-module build system |
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Test everything
